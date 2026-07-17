@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #000000;
+    --color-surface: #0A0A0A;
+    --color-gold: #D4AF37;
+    --color-text: #FFFFFF;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-white font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv01', 'cv11';
+  }
+
+  ::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.3);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.5);
+  }
+}
+
+@layer components {
+  /* —— Eyebrow label —— */
+  .eyebrow {
+    @apply text-eyebrow font-medium uppercase tracking-[0.2em];
+    color: #D4AF37;
+  }
+
+  /* —— Buttons —— */
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2 font-medium tracking-wide
+           transition-all duration-500 ease-lux overflow-hidden select-none;
+  }
+  .btn-primary {
+    @apply btn px-7 py-3.5 bg-white text-black rounded-full
+           hover:bg-gold-400 hover:text-black;
+  }
+  .btn-gold {
+    @apply btn px-7 py-3.5 bg-gold-gradient text-black rounded-full font-semibold
+           hover:shadow-gold;
+  }
+  .btn-gold-warm {
+    @apply btn px-7 py-3.5 text-black rounded-full font-semibold;
+    background: #F2C94C;
+  }
+  .btn-outline {
+    @apply btn px-7 py-3.5 border rounded-full
+           transition-all duration-500;
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+  .btn-outline:hover {
+    border-color: #D4AF37;
+    background: rgba(212, 175, 55, 0.1);
+  }
+  .btn-ghost {
+    @apply btn px-4 py-2 rounded-full transition-all duration-300;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .btn-ghost:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .btn-lg {
+    @apply px-9 py-4 text-base;
+  }
+  .btn-sm {
+    @apply px-5 py-2.5 text-sm;
+  }
+
+  /* —— Glassmorphism (dark premium) —— */
+  .glass {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+  }
+  .glass-light {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-gold {
+    background: rgba(212, 175, 55, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+  .glass-pill {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* —— Cards (dark glass) —— */
+  .card {
+    @apply glass overflow-hidden transition-all duration-500 ease-lux;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1.5;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  .card-hover:hover {
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 175, 55, 0.2);
+  }
+  .card-lux {
+    @apply glass overflow-hidden transition-all duration-700 ease-lux;
+  }
+  .card-lux:hover {
+    border-color: rgba(212, 175, 55, 0.25);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  }
+
+  /* —— Form fields (dark) —— */
+  .field {
+    @apply w-full px-4 py-3 rounded-xl transition-all duration-300;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+  .field::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+  }
+  .field:focus {
+    outline: none;
+    border-color: #D4AF37;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+  }
+  .field-label {
+    @apply block text-sm font-medium mb-2;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* —— Section helpers —— */
+  .section {
+    @apply py-20 md:py-30;
+  }
+  .container-lux {
+    @apply max-w-7xl mx-auto px-6 md:px-10;
+  }
+
+  /* —— Gold divider —— */
+  .gold-rule {
+    @apply h-px w-16;
+    background: linear-gradient(90deg, #D4AF37, transparent);
+  }
+
+  /* —— Link underline animation —— */
+  .link-underline {
+    @apply relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px
+           after:w-0 after:transition-all after:duration-500 after:ease-lux
+           hover:after:w-full;
+  }
+  .link-underline::after {
+    background: #D4AF37;
+  }
+
+  /* —— Section transition separators —— */
+  .section-fade-top {
+    position: relative;
+  }
+  .section-fade-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .section-fade-bottom {
+    position: relative;
+  }
+  .section-fade-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-shadow-lux {
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.8);
+  }
+  .text-gold {
+    color: #D4AF37;
+  }
+  .text-secondary {
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .bg-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  }
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+  .vignette {
+    box-shadow: inset 0 0 200px 60px rgba(0, 0, 0, 0.6);
+  }
+}
